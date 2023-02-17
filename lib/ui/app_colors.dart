@@ -2,15 +2,45 @@
 
 import 'package:flutter/material.dart';
 
+final ThemeData appTheme = _appTheme();
+
+//Define Base theme for app
+ThemeData _appTheme() {
+  final ThemeData base = ThemeData();
+
+  return base.copyWith(
+    textTheme: TextTheme(
+      headline1: TextStyle(color: Colors.white),
+    ),
+    highlightColor: Colors.grey,
+    primaryColorLight: Colors.white,
+    cardTheme: CardTheme(
+      color: AppColors.darkGray,
+    ),
+    scaffoldBackgroundColor: AppColors.darkGray,
+    colorScheme: base.colorScheme.copyWith(
+      primary: Colors.black,
+
+
+    ),
+
+
+
+  );
+}
+
+
+
 class AppColors {
-  static MaterialColor get black => _blackPrimaryColor.toMaterialColor();
   static MaterialAccentColor get blue => _bluePrimaryColor.toMaterialAccentColor();
   static MaterialAccentColor get green => _greenPrimaryColor.toMaterialAccentColor();
+  static MaterialAccentColor get red => _redPrimaryColor.toMaterialAccentColor();
+  static MaterialAccentColor get darkGray => _darkGrayPrimaryColor.toMaterialAccentColor();
 
-  static Color get grey => const Color(0xFFF2F6FA);
-  static const Color _blackPrimaryColor = Color(0xFF000000);
   static const Color _bluePrimaryColor = Color(0xFF0084ff);
   static const Color _greenPrimaryColor = Color(0xFF00BA84);
+  static const Color _redPrimaryColor = Color(0xFFFF004A);
+  static const Color _darkGrayPrimaryColor = Color(0xFF171717);
 
 }
 
