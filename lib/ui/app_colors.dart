@@ -9,7 +9,7 @@ ThemeData _appTheme() {
   final ThemeData base = ThemeData();
 
   return base.copyWith(
-    textTheme: TextTheme(
+    textTheme: const TextTheme(
       headline1: TextStyle(color: Colors.white),
     ),
     highlightColor: Colors.grey,
@@ -58,10 +58,7 @@ extension _Material on Color {
     900: this,
   };
 
-  MaterialColor toMaterialColor() => MaterialColor(
-    value,
-    _toSwatch(),
-  );
+
 
   MaterialAccentColor toMaterialAccentColor() => MaterialAccentColor(
     value,

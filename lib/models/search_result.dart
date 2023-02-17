@@ -1,13 +1,13 @@
 class SearchResult {
-  final String title;
-  final String message;
+  final String name;
+  final String joinDate;
   final String imageUrl;
-  final color;
+  final dynamic color;
 
   const SearchResult({
-    required this.title,
-    required this.message,
+    required this.name,
+    required this.joinDate,
     required this.imageUrl,
-    required this.color,
+     this.color,
   });
 }

@@ -78,16 +78,16 @@ class SearchScreen extends StatelessWidget {
                 }
 
                 if (state is SearchNoItems) {
-                  return Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: const Text('Sorry, that search returned zero results'),
+                  return const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text('Sorry, that search returned zero results'),
                   );
                 }
 
                 if (state is SearchError) {
-                  return Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: const Text('An error has occurred, please try again'),
+                  return const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text('An error has occurred, please try again'),
                   );
                 }
 
@@ -140,8 +140,8 @@ class SearchScreen extends StatelessWidget {
                                           width: 160.0,
                                           height: 20.0,
                                           child: Text(
-                                            searchResult.title ?? '',
-                                            style: TextStyle(color: Colors.white),
+                                            searchResult.name,
+                                            style: const TextStyle(color: Colors.white),
                                           ),
                                         ),
                                         Padding(
@@ -149,8 +149,8 @@ class SearchScreen extends StatelessWidget {
                                           child: SizedBox(
                                             width: 160.0,
                                             height: 20.0,
-                                            child: Text('Member since ${searchResult.message}',
-                                              style: TextStyle(color: Colors.white, fontSize: 12.5),
+                                            child: Text('Member since ${searchResult.joinDate}',
+                                              style: const TextStyle(color: Colors.white, fontSize: 12.5),
                                             ),
                                           ),
                                         ),
@@ -158,7 +158,7 @@ class SearchScreen extends StatelessWidget {
                                     ),
                                   ),
                                   IconButton(
-                                    onPressed: () {}, icon: Icon(Icons.more_horiz, color: Colors.white, size: 40.0,),),
+                                    onPressed: () {}, icon: const Icon(Icons.more_horiz, color: Colors.white, size: 40.0,),),
                                 ],
                               ),
 
