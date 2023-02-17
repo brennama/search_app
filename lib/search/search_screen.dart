@@ -17,20 +17,18 @@ class SearchScreen extends StatelessWidget {
     return BlocBuilder<SearchBloc, SearchState>(builder: (context, state) {
       return Scaffold(
         appBar: AppBar(
-         leading: IconButton(icon: const Icon(Icons.arrow_back_ios, color: Colors.white,), onPressed: () {
-         },),
+         leading: Icon(Icons.arrow_back_ios, color: Colors.white,),
          title:
          const Text('Add an Admin', style: TextStyle(fontSize: 24.0),),
          actions: <Widget>[
-         IconButton(
-           icon: Icon(
-             Icons.handshake_outlined,
-             color: Theme.of(context).primaryColorLight,
-             size: 35.0,
-           ),
-           onPressed: () {
-           },
-         )
+         Padding(
+           padding: const EdgeInsets.all(8.0),
+           child: Icon(
+               Icons.handshake_outlined,
+               color: Theme.of(context).primaryColorLight,
+               size: 35.0,
+             ),
+         ),
        ],),
         body: Padding(
           padding: const EdgeInsets.all(10.0),

@@ -8,11 +8,19 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
   late final SearchRepository _searchRepo;
   final BehaviorSubject<String> _searchSubject = BehaviorSubject();
 
+
+
   Stream<String> get _searchStream => _searchSubject.stream;
 
+
+
   SearchBloc({required SearchRepository repo, int searchWaitTime = 500}) : super(SearchInitial()) {
+
+
     _searchRepo = repo;
     _listenForSearches(searchWaitTime: searchWaitTime);
+
+
 
     on<SearchChanged>((event, emit) async {
       if (event.searchQuery.isEmpty) {
@@ -40,6 +48,8 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     });
   }
 
+
+
   void _listenForSearches({required int searchWaitTime}) {
     _searchStream
     // When someone searches we wait half a second before processing the search.
@@ -58,5 +68,11 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
 
       add(SearchComplete(searchResults: response.searchResults));
     });
+
+  }   @override
+  Future<void> close() {
+    _searchSubject.close();
+    return super.close();
   }
-}
+  }
+
