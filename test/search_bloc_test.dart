@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
@@ -55,6 +57,7 @@ void main() {
                 name: 'Jane Doe',
                 joinDate: '01/01/2021',
                 imageUrl: 'image url',
+                color: Color(5),
               )
             ],
           ),
@@ -113,6 +116,7 @@ void main() {
                 name: 'Jane Doe',
                 joinDate: '01/01/2021',
                 imageUrl: 'image url',
+                color: Color(5),
               )
             ],
           ),

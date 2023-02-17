@@ -17,19 +17,18 @@ class SearchScreen extends StatelessWidget {
     return BlocBuilder<SearchBloc, SearchState>(builder: (context, state) {
       return Scaffold(
         appBar: AppBar(
-         leading: Icon(Icons.arrow_back_ios, color: Colors.white,),
+         leading: Icon(Icons.arrow_back_ios, color: Colors.white, size: 25,),
          title:
-         const Text('Add an Admin', style: TextStyle(fontSize: 24.0),),
+         Text('Add an Admin',
+            style: TextStyle(fontSize: 24.0, fontFamily: 'avenir', fontWeight: FontWeight.w600,),),
          actions: <Widget>[
-         Padding(
-           padding: const EdgeInsets.all(8.0),
-           child: Icon(
-               Icons.handshake_outlined,
-               color: Theme.of(context).primaryColorLight,
-               size: 35.0,
-             ),
-         ),
-       ],),
+           Padding(
+             padding: const EdgeInsets.all(8.0),
+             child: Container(
+               width: 32.0,
+               child: Image.asset('Icon.png'),),
+
+        ),],),
         body: Padding(
           padding: const EdgeInsets.all(10.0),
           child: Column(
@@ -41,27 +40,27 @@ class SearchScreen extends StatelessWidget {
                       controller: _controller,
                       textAlignVertical: TextAlignVertical.bottom,
                       cursorColor: Theme.of(context).highlightColor,
-                      style: TextStyle(color: Theme.of(context).primaryColorLight,),
+                      style: TextStyle(color: Theme.of(context).primaryColorLight, fontFamily: 'SF Pro'),
                       onChanged: (searchQuery) => context.read<SearchBloc>().add(SearchChanged(searchQuery: searchQuery)),
                       decoration: InputDecoration(
                         constraints: const BoxConstraints(maxHeight: 33.0),
-                        prefixIcon: Icon(Icons.search, color: Theme.of(context).highlightColor, size: 22.0,),
+                        prefixIcon: Icon(Icons.search, color: Theme.of(context).highlightColor, size: 23.0,),
                         filled: true,
                         fillColor: Colors.white10,
                         border: OutlineInputBorder(borderSide: BorderSide.none,
                           borderRadius: BorderRadius.circular(10.0),),
                         hintText: 'Search for a user...',
-                        hintStyle:  TextStyle(color: Theme.of(context).highlightColor,),
+                        hintStyle:  TextStyle(color: Theme.of(context).highlightColor, fontFamily: 'SF Pro'),
                         suffixIcon: IconButton(
                           onPressed: _controller.clear,
-                          icon: Icon(Icons.cancel, color: Theme.of(context).highlightColor, size: 18.0,),
+                          icon: Icon(Icons.cancel, color: Theme.of(context).highlightColor, size: 17.0,),
                         ),
                       ),
                     ),
                   ),
           Padding(
                      padding: const EdgeInsets.all(8.0),
-                     child: InkWell(onTap: _controller.clear,child: Text('Cancel', style: TextStyle(color: AppColors.blue, fontSize: 15.0,),),
+                     child: InkWell(onTap: _controller.clear,child: Text('Cancel', style: TextStyle(color: AppColors.blue, fontSize: 15.0, fontFamily: 'SF Pro'),),
                      ),
                    )
                 ],
@@ -92,7 +91,7 @@ class SearchScreen extends StatelessWidget {
                 if (state is SearchLoaded) {
                   return Expanded(
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 8.0),
+                      padding: const EdgeInsets.symmetric(vertical: 3.0),
                       child: ListView.builder(itemCount: state.searchResults.length, itemBuilder: (context, index) {
                         final searchResult = state.searchResults[index];
 
@@ -110,14 +109,8 @@ class SearchScreen extends StatelessWidget {
                                     decoration: BoxDecoration(
                                       border: Border.all(
                                         color: searchResult.color,
-                                          width: 3.5),
+                                          width: 3.0),
                                       borderRadius: BorderRadius.circular(50),
-                                      // boxShadow: [
-                                      //   BoxShadow(
-                                      //     color: Colors.white54,
-                                      //     spreadRadius: 0.1,
-                                      //   ),
-                                      // ],
                                     ),
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(50),
@@ -131,24 +124,24 @@ class SearchScreen extends StatelessWidget {
 
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.only(top: 8.0, left: 20.0, right: 61.0, bottom: 15.0),
+                                    padding: const EdgeInsets.only(left: 20.0, right: 55.0, bottom: 15.0),
                                     child: Column(
                                       children: [
                                         SizedBox(
-                                          width: 160.0,
+                                          width: 163.0,
                                           height: 20.0,
                                           child: Text(
                                             searchResult.name,
-                                            style: const TextStyle(color: Colors.white),
+                                            style: const TextStyle(color: Colors.white, fontFamily: 'avenir', fontSize: 16.0),
                                           ),
                                         ),
                                         Padding(
                                           padding: const EdgeInsets.only(top: 8.0),
                                           child: SizedBox(
-                                            width: 160.0,
+                                            width: 167.0,
                                             height: 20.0,
                                             child: Text('Member since ${searchResult.joinDate}',
-                                              style: const TextStyle(color: Colors.white, fontSize: 12.5),
+                                              style: const TextStyle(color: Colors.white, fontSize: 14, fontFamily: 'avenir'),
                                             ),
                                           ),
                                         ),

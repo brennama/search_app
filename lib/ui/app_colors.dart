@@ -6,11 +6,12 @@ final ThemeData appTheme = _appTheme();
 
 //Define Base theme for app
 ThemeData _appTheme() {
-  final ThemeData base = ThemeData();
+  final ThemeData base = ThemeData(
+  );
 
   return base.copyWith(
     textTheme: const TextTheme(
-      headline1: TextStyle(color: Colors.white),
+      headline1: TextStyle(color: Colors.white, fontFamily: 'Avenir'),
     ),
     highlightColor: Colors.grey,
     primaryColorLight: Colors.white,

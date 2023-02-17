@@ -1,13 +1,15 @@
+import 'package:flutter/material.dart';
+
 class SearchResult {
   final String name;
   final String joinDate;
   final String imageUrl;
-  final dynamic color;
+  final Color color;
 
   const SearchResult({
     required this.name,
     required this.joinDate,
     required this.imageUrl,
-     this.color,
+    required this.color,
   });
 }
