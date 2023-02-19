@@ -17,16 +17,16 @@ class SearchScreen extends StatelessWidget {
     return BlocBuilder<SearchBloc, SearchState>(builder: (context, state) {
       return Scaffold(
         appBar: AppBar(
-         leading: Icon(Icons.arrow_back_ios, color: Colors.white, size: 25,),
+         leading: Icon(Icons.arrow_back_ios, color: Colors.white, size: 28,),
          title:
          Text('Add an Admin',
             style: TextStyle(fontSize: 24.0, fontFamily: 'avenir', fontWeight: FontWeight.w600,),),
          actions: <Widget>[
            Padding(
-             padding: const EdgeInsets.all(8.0),
+             padding: const EdgeInsets.all(10.0),
              child: Container(
-               width: 32.0,
-               child: Image.asset('Icon.png'),),
+               width: 37.0,
+               child: Image.asset('IconBold.png'),),
 
         ),],),
         body: Padding(
@@ -44,7 +44,14 @@ class SearchScreen extends StatelessWidget {
                       onChanged: (searchQuery) => context.read<SearchBloc>().add(SearchChanged(searchQuery: searchQuery)),
                       decoration: InputDecoration(
                         constraints: const BoxConstraints(maxHeight: 33.0),
-                        prefixIcon: Icon(Icons.search, color: Theme.of(context).highlightColor, size: 23.0,),
+                        prefixIcon: Align(
+                          widthFactor: 0.00001,
+                          alignment: Alignment.centerLeft,
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 3.0),
+                              child: Image.asset('Search.png'),
+                            )),
+                        //Icon(Icons.search, color: Theme.of(context).highlightColor, size: 23.0,),
                         filled: true,
                         fillColor: Colors.white10,
                         border: OutlineInputBorder(borderSide: BorderSide.none,
@@ -129,7 +136,7 @@ class SearchScreen extends StatelessWidget {
                                       children: [
                                         SizedBox(
                                           width: 163.0,
-                                          height: 20.0,
+                                          height: 22.0,
                                           child: Text(
                                             searchResult.name,
                                             style: const TextStyle(color: Colors.white, fontFamily: 'avenir', fontSize: 16.0),
@@ -139,7 +146,7 @@ class SearchScreen extends StatelessWidget {
                                           padding: const EdgeInsets.only(top: 8.0),
                                           child: SizedBox(
                                             width: 167.0,
-                                            height: 20.0,
+                                            height: 25.0,
                                             child: Text('Member since ${searchResult.joinDate}',
                                               style: const TextStyle(color: Colors.white, fontSize: 14, fontFamily: 'avenir'),
                                             ),
