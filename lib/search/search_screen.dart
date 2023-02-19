@@ -44,13 +44,12 @@ class SearchScreen extends StatelessWidget {
                       onChanged: (searchQuery) => context.read<SearchBloc>().add(SearchChanged(searchQuery: searchQuery)),
                       decoration: InputDecoration(
                         constraints: const BoxConstraints(maxHeight: 33.0),
-                        prefixIcon: Align(
-                          widthFactor: 0.00001,
-                          alignment: Alignment.centerLeft,
-                            child: Padding(
-                              padding: const EdgeInsets.only(left: 3.0),
-                              child: Image.asset('Search.png'),
-                            )),
+                        prefixIcon:
+                            Image.asset('Search.png', width: 22.0,),
+                        prefixIconConstraints: BoxConstraints(
+                          maxWidth: 30.0,
+                          minWidth: 30.0
+                        ),
                         //Icon(Icons.search, color: Theme.of(context).highlightColor, size: 23.0,),
                         filled: true,
                         fillColor: Colors.white10,
@@ -60,14 +59,14 @@ class SearchScreen extends StatelessWidget {
                         hintStyle:  TextStyle(color: Theme.of(context).highlightColor, fontFamily: 'SF Pro'),
                         suffixIcon: IconButton(
                           onPressed: _controller.clear,
-                          icon: Icon(Icons.cancel, color: Theme.of(context).highlightColor, size: 17.0,),
+                          icon: Icon(Icons.cancel, color: Theme.of(context).highlightColor, size: 16.0,),
                         ),
                       ),
                     ),
                   ),
           Padding(
-                     padding: const EdgeInsets.all(8.0),
-                     child: InkWell(onTap: _controller.clear,child: Text('Cancel', style: TextStyle(color: AppColors.blue, fontSize: 15.0, fontFamily: 'SF Pro'),),
+                     padding: const EdgeInsets.only(left: 10.0),
+                     child: InkWell(onTap: _controller.clear,child: Text('Cancel', style: TextStyle(color: AppColors.blue, fontSize: 17.0, fontFamily: 'SF Pro'),),
                      ),
                    )
                 ],
@@ -104,7 +103,7 @@ class SearchScreen extends StatelessWidget {
 
                         return
                           Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 4.0),
+                            padding: const EdgeInsets.symmetric(vertical: 3.0),
                             child: Card(
                               elevation: 0.0,
                               shape: RoundedRectangleBorder(
@@ -122,8 +121,8 @@ class SearchScreen extends StatelessWidget {
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(50),
                                       child: CachedNetworkImage(
-                                        width: 65,
-                                        height: 65,
+                                        width: 69,
+                                        height: 69,
                                         imageUrl: searchResult.imageUrl,
                                         fit: BoxFit.cover,
                                       ),
@@ -135,18 +134,18 @@ class SearchScreen extends StatelessWidget {
                                     child: Column(
                                       children: [
                                         SizedBox(
-                                          width: 163.0,
-                                          height: 22.0,
+                                          width: 187.0,
+                                          height: 19.0,
                                           child: Text(
                                             searchResult.name,
                                             style: const TextStyle(color: Colors.white, fontFamily: 'avenir', fontSize: 16.0),
                                           ),
                                         ),
                                         Padding(
-                                          padding: const EdgeInsets.only(top: 8.0),
+                                          padding: const EdgeInsets.only(top: 10.0),
                                           child: SizedBox(
-                                            width: 167.0,
-                                            height: 25.0,
+                                            width: 187.0,
+                                            height: 22.0,
                                             child: Text('Member since ${searchResult.joinDate}',
                                               style: const TextStyle(color: Colors.white, fontSize: 14, fontFamily: 'avenir'),
                                             ),
@@ -156,7 +155,7 @@ class SearchScreen extends StatelessWidget {
                                     ),
                                   ),
                                   IconButton(
-                                    onPressed: () {}, icon: const Icon(Icons.more_horiz, color: Colors.white, size: 40.0,),),
+                                    onPressed: () {}, icon: const Icon(Icons.more_horiz, color: Colors.white, size: 45.0,),),
                                 ],
                               ),
 
