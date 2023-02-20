@@ -50,7 +50,7 @@ void main() {
       final sfFontLoader = FontLoader('SF Pro')..addFont(sfFont);
       await sfFontLoader.load();
 
-      await tester.pumpWidget(SearchApp());
+      await tester.pumpWidget(const SearchApp());
       await tester.awaitImages();
       await expectLater(
         find.byType(SearchApp),

@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:search_app/search/search_bloc.dart';
@@ -5,6 +6,7 @@ import 'package:search_app/search/search_event.dart';
 import 'package:search_app/search/search_state.dart';
 import 'package:search_app/ui/app_colors.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:substring_highlight/substring_highlight.dart';
 
 var _controller = TextEditingController();
 
@@ -17,14 +19,14 @@ class SearchScreen extends StatelessWidget {
     return BlocBuilder<SearchBloc, SearchState>(builder: (context, state) {
       return Scaffold(
         appBar: AppBar(
-         leading: Icon(Icons.arrow_back_ios, color: Colors.white, size: 28,),
+         leading: const Icon(Icons.arrow_back_ios, color: Colors.white, size: 27,),
          title:
-         Text('Add an Admin',
+         const Text('Add an Admin',
             style: TextStyle(fontSize: 24.0, fontFamily: 'avenir', fontWeight: FontWeight.w600,),),
          actions: <Widget>[
            Padding(
              padding: const EdgeInsets.all(10.0),
-             child: Container(
+             child: SizedBox(
                width: 37.0,
                child: Image.asset('IconBold.png'),),
 
@@ -43,14 +45,14 @@ class SearchScreen extends StatelessWidget {
                       style: TextStyle(color: Theme.of(context).primaryColorLight, fontFamily: 'SF Pro'),
                       onChanged: (searchQuery) => context.read<SearchBloc>().add(SearchChanged(searchQuery: searchQuery)),
                       decoration: InputDecoration(
-                        constraints: const BoxConstraints(maxHeight: 33.0),
+                        constraints: const BoxConstraints(maxHeight: 36.0, minHeight: 36.0,),
                         prefixIcon:
                             Image.asset('Search.png', width: 22.0,),
-                        prefixIconConstraints: BoxConstraints(
+                        prefixIconConstraints: const BoxConstraints(
                           maxWidth: 30.0,
                           minWidth: 30.0
                         ),
-                        //Icon(Icons.search, color: Theme.of(context).highlightColor, size: 23.0,),
+
                         filled: true,
                         fillColor: Colors.white10,
                         border: OutlineInputBorder(borderSide: BorderSide.none,
@@ -59,7 +61,11 @@ class SearchScreen extends StatelessWidget {
                         hintStyle:  TextStyle(color: Theme.of(context).highlightColor, fontFamily: 'SF Pro'),
                         suffixIcon: IconButton(
                           onPressed: _controller.clear,
-                          icon: Icon(Icons.cancel, color: Theme.of(context).highlightColor, size: 16.0,),
+                          icon: Icon(Icons.cancel, color: Theme.of(context).highlightColor, size: 20.0,),
+                        ),
+                        suffixIconConstraints: const BoxConstraints(
+                            maxWidth: 33.0,
+                            minWidth: 33.0,
                         ),
                       ),
                     ),
@@ -103,7 +109,7 @@ class SearchScreen extends StatelessWidget {
 
                         return
                           Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 3.0),
+                            padding: const EdgeInsets.only(top: 3.0, bottom: 3.0, left: 4.0),
                             child: Card(
                               elevation: 0.0,
                               shape: RoundedRectangleBorder(
@@ -134,18 +140,24 @@ class SearchScreen extends StatelessWidget {
                                     child: Column(
                                       children: [
                                         SizedBox(
-                                          width: 187.0,
-                                          height: 19.0,
-                                          child: Text(
-                                            searchResult.name,
-                                            style: const TextStyle(color: Colors.white, fontFamily: 'avenir', fontSize: 16.0),
+                                          width: 182.0,
+                                          height: 20.0,
+                                          child: SubstringHighlight(
+                                            text: searchResult.name,
+                                            term: _controller.text,
+                                            textStyle: const TextStyle(color: Colors.white, fontFamily: 'avenir', fontSize: 16.0),
+                                            textStyleHighlight: const TextStyle(
+                                              color: Colors.white,
+                                              fontFamily: 'avenir',
+                                              fontWeight: FontWeight.w900,
+                                          ),
                                           ),
                                         ),
                                         Padding(
-                                          padding: const EdgeInsets.only(top: 10.0),
+                                          padding: const EdgeInsets.only(top: 11.0),
                                           child: SizedBox(
-                                            width: 187.0,
-                                            height: 22.0,
+                                            width: 182.0,
+                                            height: 15.0,
                                             child: Text('Member since ${searchResult.joinDate}',
                                               style: const TextStyle(color: Colors.white, fontSize: 14, fontFamily: 'avenir'),
                                             ),
@@ -154,8 +166,11 @@ class SearchScreen extends StatelessWidget {
                                       ],
                                     ),
                                   ),
-                                  IconButton(
-                                    onPressed: () {}, icon: const Icon(Icons.more_horiz, color: Colors.white, size: 45.0,),),
+                                  Padding(
+                                    padding: const EdgeInsets.only(bottom: 8.0, right: 2.0),
+                                    child: IconButton(
+                                      onPressed: () {}, icon: const Icon(Icons.more_horiz, color: Colors.white, size: 45.0,),),
+                                  ),
                                 ],
                               ),
 
